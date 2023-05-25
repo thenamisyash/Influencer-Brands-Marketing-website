@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Inter&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Mulish:wght@400;500&family=Raleway:ital,wght@0,300;0,400;1,300;1,400&family=Ubuntu:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+}
+
+/* main{
+    width: 100%;
+    padding: 20px;
+} */
+.sidebar {
+    background-color: #f1e4c7;
+    color: #2E2E2E;
+    height: 100vh;
+    padding: 0 5px;
+    width: 20vw;
+}
+
+.bars {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+}
+
+/* .bars img{
+    width: 30px;
+} */
+.link {
+    /* display: flex; */
+    color: black;
+    padding: 10px;
+    font-family: 'Blacklisted', 'serif';
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: all 0.5s;
+}
+
+.link_text {
+    padding: 0 12px;
+    /* width: 100%; */
+}
+
+@font-face {
+    font-family: 'Blacklisted';
+    src: local('Blcaklisted'), url('./Components/imgs/Blacklisted.ttf') format('truetype');
+}
+
+.privacy {
+    background-color: transparent;
+    /* padding: 10px 0; */
+}
+
+.polices h2 {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.sub-part h5 {
+    font-size: 22px;
+}
