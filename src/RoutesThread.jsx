@@ -45,8 +45,8 @@ const RoutesThread = () => {
                     <Route path="briefForm" element={<Private> <BriefForm /></Private>} />
                     <Route path="approve" element={<Approve />} />
                     <Route path="campaignList" element={<Private> <ListOfCampagin /></Private>} />
-                    <Route path="trendsDashboard" element={<Private> <Trends /></Private>} />
-                    <Route path="influencershow" element={<Private> <SearchInfluencer /></Private>} />
+                    <Route path="trendsDashboard" element={<Private> <Trends/></Private>} />
+                    <Route path="influencershow" element={<Private> <SearchInfluencer/></Private>} />
                 </Routes>
             </AuthProvide>
         </div>

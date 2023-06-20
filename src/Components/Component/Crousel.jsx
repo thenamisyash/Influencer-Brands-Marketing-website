@@ -5,7 +5,12 @@ import BrandAmbasador from "./BrandAmbasador";
 import Explore from "./Explore";
 import Rewards from "./Rewards";
 import './Bounty.css';
+import { useNavigate } from "react-router-dom";
 const Crousel = () => {
+    const navigate = useNavigate();
+    const skip = () => {
+        navigate("/Influencer/profile")
+    }
     return (
         <>
             <Carousel slide={false} className="carousel">
@@ -23,6 +28,9 @@ const Crousel = () => {
                 </Carousel.Item>
             </Carousel>
             
+            <div style={{textAlign:"center"}}>
+                <button className='skip' onClick={skip}>Skip</button>
+            </div>
         </>
     );
 }

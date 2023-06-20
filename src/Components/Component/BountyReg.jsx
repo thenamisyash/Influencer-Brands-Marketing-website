@@ -2,10 +2,8 @@ import React from "react";
 import './Bounty.css';
 import { useNavigate } from "react-router-dom";
 const Bounty = () => {
-    const navigate = useNavigate();
-    const skip = () => {
-        navigate("/Influencer/profile")
-    }
+
+
     return (
         <>
             <section className="Register-page">
@@ -24,7 +22,6 @@ const Bounty = () => {
                             A go-to place for all influencers where they can learn, grown & Collobrate.
                         </p>
                     </div>
-                    <button className='skip' onClick={skip}>Skip</button>
                 </div>
             </section>
         </>

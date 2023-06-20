@@ -59,7 +59,7 @@ const InfluencersAllData = () => {
                 <div className='card-container my-2 kard'   >
                   <div className='card' >
                     <div className=" d-flex justify-content-end ">
-                      <span className='card-number card-circle subtle mx-2 my-2'>id</span>
+                      {/* <span className='card-number card-circle subtle mx-2 my-2'>id</span> */}
                       <span className="card-circle  card-number mx-2 my-2" onClick={() => Passit(data.email, data._id)}>
 
                         <EmailPass.Provider value={passemail}>

@@ -1,8 +1,6 @@
 import axios from 'axios';
-// import Card from '../../comp/Card';
 import { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
-// import Menu from '../../comp/Menu';
 import { useNavigate } from "react-router";
 import BrandsAllData from '../../comp/BrandsAllData';
 import InfluencersAllData from '../../comp/InfluencersAllData';
@@ -11,49 +9,16 @@ import { baseUrl } from '../../PrivateRoutes';
 
 const Activity = () => {
   const navigate = useNavigate();
-  // const [menu] = useState(Menu);
   const [bno, setBno] = useState();
   const [ino, setIno] = useState();
   const [detail, setDetail] = useState([]);
-  // const [hno, setHno] = useState();
 
-  // const [Blength, setBlength] = useState();
-
-
-
-  // useEffect(() => {
-  //   axios.get(`${baseUrl}/api/Brands/getbrandsDataCount`)
-  //     .then((res) => {
-  //       setBno(res.data)
-  //       console.log("Get Brands Data Count Response")
-  //     })
-  //     .catch((error) =>
-  //       console.log("Get Brands Data Count Error -  ", error));
-  // }, [bno]);
-
-  // useEffect(() => {
-  //   // influencer data count
-  //   axios.get(`${baseUrl}/api/Influencer/getInfluencerDataCount`)
-  //     .then((res) => {
-  //       setIno(res.data)
-  //       console.log("Get Influencer Data Count Response - ")
-  //     })
-  //     .catch((error) =>
-  //       console.log("Get Influencer Data Count Error -", error));
-  //   // brands data count
-  //   // axios.get(`${baseUrl}/api/Influencer/getInfluencerDataCount`)
-  //   // .then((res) => setHno(res.data))
-  //   // .catch((error) =>
-  //   //   console.log("the hashtag error - ", error));
-  // }, [ino]);
 
   useEffect(() => {
     axios.get(`${baseUrl}/api/Brands/getbrandsData`)
       .then((res) => {
         setDetail(res.data)
         setBno(Object.keys(res.data).length);
-        console.log("Getting Brands Data Response - ")
-        // console.log("the y data - ", res.data);
       })
       .catch((error) =>
         console.log("Getting Brands Data Error - ", error));
@@ -63,8 +28,6 @@ const Activity = () => {
       .then((res) => {
         setDetail(res.data)
         setIno(Object.keys(res.data).length);
-        console.log("Getting Brands Data Response - ")
-        // console.log("the y data - ", res.data);
       })
       .catch((error) =>
         console.log("Getting Brands Data Error - ", error));
@@ -96,7 +59,7 @@ const Activity = () => {
                   <h5 className='h5 my-3'>Top 10 Brands on Trending</h5>
                   {/* <Card AllData={menu} /> */}
                   <BrandsAllData />
-                  <button onClick={() => { navigate("/AdminPanel/admin/dashboard/all") }} className="btn  btn-block btn-lg  gradient-custom-4 bg-info text-body my-2 butt" style={{ "paddingTop": "0.7rem", "backgroundColor": "green" }} type="submit"  > <span className="text-white">Show More ➡</span></button>
+                  <button onClick={() => { navigate("/AdminPanel/admin/dashboard/all") }} className="btn  btn-block btn-lg  gradient-custom-4 bg-info text-body my-2 butt" style={{ "paddingTop": "0.7rem", "backgroundColor": "green" }} type="submit" disabled > <span className="text-white">Show More ➡</span></button>
                 </section>
 
 
@@ -118,9 +81,9 @@ const Activity = () => {
                 <section>
                   <span className=" h3 mb-1">INFLUENCERS</span>
                   <h5 className='h5 my-3'>Top 10 Influencers on Trending</h5>
-                  {/* <Card AllData={menu} /> */}
+
                   <InfluencersAllData />
-                  <button onClick={() => { navigate("/AdminPanel/admin/dashboard/all") }} className="btn  btn-block btn-lg  gradient-custom-4 bg-info text-body my-2 butt" style={{ "paddingTop": "0.7rem", "backgroundColor": "green" }} type="submit"  > <span className="text-white">Show More ➡</span></button>
+                  <button onClick={() => { navigate("/AdminPanel/admin/dashboard/all") }} className="btn  btn-block btn-lg  gradient-custom-4 bg-info text-body my-2 butt" style={{ "paddingTop": "0.7rem", "backgroundColor": "green" }}  disabled> <span className="text-white">Show More ➡</span></button>
                 </section>
               </div>
             </div>

@@ -73,7 +73,6 @@ const AdminAllData = () => {
                                             <button className="btn  btn-block btn-lg   gradient-custom-4 bg-danger text-body my-2 butt" style={{ "paddingTop": "0.7rem", "backgroundColor": "green" }}   > <span className="text-white">
                                                 <IdPass.Provider value={passid}>
                                                 <NamePass.Provider value={passname}>
-
                                                     <SupAdminDelModal />
                                                 </NamePass.Provider>
                                                 </IdPass.Provider>

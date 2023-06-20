@@ -23,6 +23,6 @@ const PrivateRoutes = () => {
   }
 }
 export default PrivateRoutes;
-
-export const baseUrl = "https://bountyandthreads-backend.azurewebsites.net/";
+// 
+export const baseUrl = "https://bounty-and-threads-backend.azurewebsites.net/";
 // export const baseUrl = "http://localhost:8081";

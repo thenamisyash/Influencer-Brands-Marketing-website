@@ -22,7 +22,6 @@
 
 .threads {
     background-color: #fff;
-    /* height: 200vh; */
 }
 
 .navv {
@@ -294,14 +293,15 @@ li {
     font-weight: 600;
     letter-spacing: 2px;
 }
-
+/* ______________________________________changed__________________________________________ */
 .btn {
     background-color: #FF2E2E;
     color: white;
     padding: 7px 60px;
     font-family: 'Comfortaa', cursive;
-    font-size: 22px;
+    /* font-size: 22px; */
 }
+/* ________________________________________________________________________________ */
 
 .privacy {
     display: flex;
@@ -332,10 +332,11 @@ li {
     text-transform: uppercase;
 }
 
-.btn {
+/* ______________________________________________changed_____________________________________________________ */
+/* .btn {
     margin-left: 65px;
-}
-
+} */
+/* ___________________________________________________________________________________________________ */
 #privacy {
     display: flex;
     gap: 12px;
@@ -1136,10 +1137,11 @@ hr {
     gap: 25px;
 }
 
-.right h3 {
+#methods {
     font-weight: 500;
     color: #474747;
     text-align: center;
+    font-weight: 600;
 }
 
 .right button {

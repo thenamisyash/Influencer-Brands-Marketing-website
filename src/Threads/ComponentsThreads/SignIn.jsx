@@ -68,7 +68,6 @@ const SignIn = () => {
                     </div>
 
 
-                    {/* <button onClick={another}>send</button> */}
                     <span id='create'>don't have an account,<Link to="/threads/brandsign">  <b className='bold'>sign up</b></Link></span>
                     <div className='privacy-policy'>
                         <span><Link to="/threads/terms/" style={{ "color": "black" }}> Privacy Policy</Link></span>

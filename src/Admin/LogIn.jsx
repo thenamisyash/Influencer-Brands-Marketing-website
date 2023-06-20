@@ -6,9 +6,10 @@ import swal from 'sweetalert';
 import axios from "axios";
 import Footer from "./comp/Footer";
 import { baseUrl } from "./PrivateRoutes";
+
+
 const LogIn = () => {
-    // const url = "https://influencer-backend.azurewebsites.net/api/Admin/adminLogin";
-    // const url = `${baseUrl}/api/Admin/adminLogin`;
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [adminIdd, setAdminIdd] = useState();
@@ -37,10 +38,8 @@ const LogIn = () => {
 
 
             swal("You are successfully logged in", "", "success");
-            navigate("/AdminPanel/dashboard/");
+            navigate("/AdminPanel/admin/dashboard/");
 
-            // GetUserName();
-            // GetIdNow();/
         }).catch((error) => {
             console.log("Login Api Error - ", error);
             swal("Oops!", "Maybe a Wrong Entry ,Try Again !! ", "warning");
@@ -48,39 +47,6 @@ const LogIn = () => {
     }
 
 
-
-    // 2. GETADMIN DATA BY ID for admin name___ 
-    // const GetUserName = () => {
-
-
-    //     const IdName = window.localStorage.getItem("Access-Id");
-
-
-
-    //     axios.get(`${baseUrl}/api/Admin/getAdminDataById/${IdName}`)
-    //         .then((resp) => {
-    //             console.log("the usestate id is ", adminIdd)  //Response
-
-             
-    //             console.log("Get AdminData By Id Response ", resp.data.admin_name) //Response
-    //             setAdminName(resp.data.admin_name)
-    //             SupConfirm();
-
-    //         }).catch((error) => {
-    //             console.log("Get AdminData By Id Error - ", error)
-    //         })
-    // }
-    // 3.   SUPER ADMIN VERIFICATION 0/1_____
-    // const SupConfirm = () => {
-    //     axios.get(`${baseUrl}/api/Admin/verifySuperAdmin/${adminName}`)
-    //         .then((res) => {
-    //             console.log("the super admin details -", res.data)
-    //             console.log("Verify Super Admin Response -", res.data.ala)
-    //             window.localStorage.setItem("allow  - ", res.data.ala);
-    //         }).catch((err) => {
-    //             console.log("Verify Super Admin Error - ", err)
-    //         })
-    // }
 
     const gotocontact = () => {
         navigate("/AdminPanel/signin");

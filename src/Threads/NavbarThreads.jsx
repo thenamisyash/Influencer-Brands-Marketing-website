@@ -13,7 +13,7 @@ function NavbarThreads() {
         window.location.href = '/';
     }
     return (
-        <> 
+        <>
             <div className='navbar-brands'>
                 <div className='nav-items'>
                     {
@@ -27,7 +27,7 @@ function NavbarThreads() {
                     <img src={Logo} alt="threads" />
                 </div>
                 <div id='none'>
-                </div>
+                </div>  
             </div>
 
             <div className='nav-list'>
@@ -39,9 +39,10 @@ function NavbarThreads() {
                     <NavLink to='/threads/linkaccount' id='profile'>  <li>Link Account</li></NavLink>
                     <NavLink to='/threads/campaignList' id='profile'>  <li>My Campaigns</li></NavLink>
                     <NavLink to='/threads/filters' id='profile'>  <li>Filters</li></NavLink>
+                    {/* <NavLink to='/threads/createdashboard' id='profile'>  <li>Create Dashboard</li></NavLink> */}
                     <NavLink to='/threads/trendsDashboard' id='profile'>  <li>Create Trends Dashboard</li></NavLink>
                     {/* <NavLink to='/threads/report' id='profile'>  <li>Report</li></NavLink> */}
-                    <NavLink to='/threads/influencershow' id='profile'>  <li>Search </li></NavLink>
+                    {/* <NavLink to='/threads/group' id='profile'>  <li>Group</li></NavLink> */}
                     <NavLink to='/threads/briefForm' id='profile'>  <li>Campaign Brief Form</li></NavLink>
                     {
                         localStorage.getItem("email") ?

@@ -27,7 +27,7 @@ const SignUp = () => {
       address: data.address,
       phone: data.mobile
     }).then((res) => {
-      navigate("/AdminPanel/login");
+      navigate("/AdminPanel/Admin/login");
       swal("You are successfully Signed Up", "Try Login", "success");
     }).catch((error) => {
       console.log("error", error);
@@ -37,7 +37,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const gotocontact = () => {
-    navigate("/Admin/login");
+    navigate("/AdminPanel/Admin/login");
   }
 
   return (

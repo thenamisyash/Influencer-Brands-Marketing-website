@@ -1,6 +1,4 @@
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-
-
 import Rou from "./comp/Routescomp";
 import Navbar from "./comp/Navbar";
 import React from "react";

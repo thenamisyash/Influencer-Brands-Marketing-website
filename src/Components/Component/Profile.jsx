@@ -1,20 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Yash from '../imgs/thenameisyash.jpg';
+import Yash from '../imgs/iconss.png';
 import './Bounty.css';
-import Count from "./FbInstaCount";
+// import Count from "./FbInstaCount";
 import ProfileSection from "./Profilesec";
 import ShowData from "./ShowData";
 import { Url } from "./RequireAuth";
+import ProfileData from "./ProfileData";
+
 const Profile = () => {
     const [data, setData] = useState('');
     const [link, setLink] = useState('');
     const [engage, setEngage] = useState('')
-    useEffect(() => {
-        getData();
-        links();
-        engagement()
-    }, [])
+    // const[ProfileImg,setProfileImg]=useState([])
+ 
+
     const getData = () => {
         let at = localStorage.getItem('Instagram-Short');
         if (at) {
@@ -39,6 +39,9 @@ const Profile = () => {
             console.log(err)
         })
     }
+
+
+
     const links = () => {
         let acc = localStorage.getItem("userName");
         axios.get(`${Url}api/Influencer/influencerLinkShow/${acc}`)
@@ -57,18 +60,36 @@ const Profile = () => {
             Influencer_username: user,
             user_name: username
         }).then((res) => {
-            // console.log(res)
+            console.log(res)
         }).catch((error) => {
             console.log(error)
         })
     }
+
+    // const getPofileData=()=>{
+    //     axios.get(`${Url}api/Influencer/InfluencerInfo/${localStorage.getItem('userName')}`)
+    //     .then((res)=>{
+    //         setProfileImg(res.data[0].influencerPersonalDetail.post_profile_url)
+    //         console.log(ProfileImg)
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+    // }
+
+    useEffect(() => {
+        getData();
+        links();
+        engagement()
+        // getPofileData()
+    }, [])
 
     return (
         <>
             <section id="profile">
                 <div className="upper-section">
                     <div className="img-sec">
-                        <img src={Yash} alt=" yash" width="170px" />
+                        <img crossorigin="anonymous" src={Yash} alt=" yash" width="170px" />
                     </div>
                     <div className="info-sec">
                         <span>Username: {data.username} </span>
@@ -85,8 +106,9 @@ const Profile = () => {
                 </div>
             </section>
             <ProfileSection data = {engage}/>
-            <Count data = {engage}/>
+            {/* <Count data = {engage}/> */}
             <ShowData />
+            <ProfileData/>
         </>
     )
 }

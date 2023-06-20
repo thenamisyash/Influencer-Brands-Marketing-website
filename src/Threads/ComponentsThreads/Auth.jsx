@@ -20,5 +20,5 @@ export const AuthProvide = ({children}) =>{
 export const useAuthorization = () => {
     return useContext(authContext)
 }
-// export const Base = "http://localhost:8081/";
-export const Base = "https://bountyandthreads-backend.azurewebsites.net/";
+// export const Base = "https://bountyandthreadsbackend.azurewebsites.net/";
+export const Base = "https://bounty-and-threads-backend.azurewebsites.net/"

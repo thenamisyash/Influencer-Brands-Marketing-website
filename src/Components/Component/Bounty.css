@@ -10,9 +10,9 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     background-size: cover;
-}
+} */
 
 .Register-page {
     display: flex;
@@ -40,7 +40,7 @@ body {
     height: 100%;
 }
 
-.Heading {
+.Heading p{
     font-family: 'Blacklisted', 'serif';
     letter-spacing: 4px;
     font-size: 2rem;
@@ -88,6 +88,7 @@ main {
     padding: 0 1rem;
     transition: .5s;
     padding: 5px;
+    z-index: 10;
 }
 
 .icons {
@@ -121,9 +122,10 @@ aside {
     letter-spacing: 2px;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Blacklisted', 'serif';
 }
 
-.nav {
+.nava {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -167,7 +169,7 @@ aside {
     padding: 0;
 }
 
-.logo {
+.logo-head {
     display: flex;
     justify-content: space-between;
     padding: 0 25px;
@@ -195,7 +197,7 @@ aside {
     opacity: 2;
 }
 
-.carousel-indicators [data-bs-target] {
+.carousel-indicators button[data-bs-target] {
     background: black;
     box-sizing: content-box;
     flex: 0 1 auto;
@@ -277,15 +279,16 @@ aside {
     justify-content: flex-start;
 }
 
-.field {
+.fieldinput {
     border: none;
     background-color: transparent;
     border-bottom: 1px solid #2E2E2E;
     padding: 3px 25px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 530;
     outline: none;
     width: 26vw;
+    font-family: sans-serif;
 }
 
 #icon {
@@ -402,6 +405,7 @@ aside {
     font-size: 16px;
     letter-spacing: 3px;
     color: #f1e4c7;
+    font-family: 'Blacklisted', 'serif';
 }
 
 #input-field {
@@ -633,6 +637,7 @@ aside {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    
 }
 
 .add-insta {
@@ -830,7 +835,7 @@ aside {
         left: 10px;
     }
 
-    .field {
+    .fieldinput {
         width: 85vw;
     }
 
@@ -1139,7 +1144,7 @@ aside {
         width: 80vw;
     }
 
-    .input .field {
+    .input .fieldinput {
         width: 70vw;
     }
 
@@ -1394,7 +1399,7 @@ aside {
         left: 17%;
     }
 
-    .field {
+    .fieldinput {
         width: 65vw;
     }
 
@@ -1613,7 +1618,7 @@ aside {
         left: 17%;
     }
 
-    .field {
+    .fieldinput {
         width: 65vw;
     }
 
@@ -1785,7 +1790,7 @@ aside {
         left: 17%;
     }
 
-    .field {
+    .fieldinput {
         width: 65vw;
     }
 
@@ -2127,6 +2132,7 @@ aside {
 .overall h5 {
     font-size: 17px;
     letter-spacing: 3px;
+    font-family: 'Blacklisted','serif';
 }
 
 .level ion-icon {
@@ -2381,7 +2387,7 @@ select {
     outline: none;
     background-color: transparent;
     border-bottom: 1px solid #2E2E2E;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', cursive!important;
     width: 20vw;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .6);
     padding: 3px 5px;
@@ -2440,7 +2446,9 @@ option {
     cursor: pointer;
     outline: none;
 }
-
+.update-page{
+    height: 100%;
+}
 .update-page .update-username h5 {
     font-family: 'Comfortaa', cursive;
     font-weight: 600;
@@ -2471,6 +2479,7 @@ option {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    /* height: 100%; */
 }
 
 .profile-updation {
@@ -2482,6 +2491,7 @@ option {
 .profile-updation h2 {
     letter-spacing: 4px;
     padding: 10px 0;
+    font-family: 'Blacklisted', 'serif';
     border-bottom: 2px solid #2E2E2E;
 }
 
@@ -2793,4 +2803,83 @@ option {
 .main-add select{
     padding: 8px 0;
     width: 158px;
+}
+
+iframe html body img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loaders{
+z-index: 10;
+width: 100%;
+height: 100%;
+justify-content:center;
+align-items: center;
+text-align: center;
+display: flex;
+position:absolute;
+}
+
+.overlay{
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2;
+}
+
+input[type="date"]{
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-position: right;
+    background-size: auto;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.edit_btn
+{
+    border:1px solid #a7a4a4 !important;
+    background-color: #a7a4a4 !important;
+    padding: 0 10px !important;
+}
+
+.profilemain
+{
+    background-color: transparent;
+}
+
+.profilecard
+{
+    background-color: transparent !important;
+    border: 1px solid #474747;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.Edit_table input {
+    background: transparent;
+    border: none;
+    padding: 5px 15px;
+    width: 20vw;
+    border-bottom: 1px solid #2E2E2E;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
 }

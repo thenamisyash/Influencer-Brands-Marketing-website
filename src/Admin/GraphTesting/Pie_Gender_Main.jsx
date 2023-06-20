@@ -111,7 +111,7 @@ const Pie_Gender_Main = () => {
         <>
             <div className='card-container '>
                 <div className='card py-5' style={{ "backgroundColor": "transparent", "border": "none" }}>
-                    <div className='text-center ' style={{ "Padding": "", }}><p className=' text-decoration-underline' style={{ "fontSize": "1.7rem", "textUnderlineOffset": "0.2em", "textDecorationThickness": "5px" }}>Gender Distribution</p></div>
+                    {/* <div className='text-center ' style={{ "Padding": "", }}><p className=' text-decoration-underline' style={{ "fontSize": "1.7rem", "textUnderlineOffset": "0.2em", "textDecorationThickness": "5px" }}>Gender Distribution</p></div> */}
                     <div className='d-flex justify-content-around text-center m-auto w-sm-25' style={{ "maxWidth": "25rem" }}>
                         <Pie_gender chartdata={PieData} />
                     </div>

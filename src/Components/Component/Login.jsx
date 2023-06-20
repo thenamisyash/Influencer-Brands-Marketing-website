@@ -8,13 +8,19 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { Url } from './RequireAuth';
 import swal from "sweetalert";
 import { redirect } from './RequireAuth';
+import { CirclesWithBar } from 'react-loader-spinner'
+
 function Login() {
+    const[isLoader,setIsLoader]=useState(false)
 
     const loginData = () => {
+        setIsLoader(true)
         axios.get(`${Url}api/Influencer/getinfluencerDataByUsername/${userName}`)
             .then((res) => {
+                setIsLoader(false)
                 localStorage.setItem("Influsername", res.data.Influencer_username)
             }).catch((err) => {
+                setIsLoader(false)
                 console.log(err)
             })
     }
@@ -54,10 +60,13 @@ function Login() {
     const userLogIn = () => {
         let data = { userName, password };
         auth.login(userName);
+
+        setIsLoader(true)
         axios.post(`${Url}api/Influencer/influencerLogin`, {
             email: data.userName.toLowerCase(),
             password: data.password
         }).then((res) => {
+            setIsLoader(false)
             redirect()
             loginData()
             localStorage.setItem("jwtToken", res.data);
@@ -66,6 +75,7 @@ function Login() {
             localStorage.setItem("isLoggedIn", true);
             navigate('/Influencer/', { replace: true });
         }).catch((err) => {
+            setIsLoader(false)
             console.log("err", err);
             swal("Recheck Email & Password", "", "error");
         });
@@ -75,6 +85,29 @@ function Login() {
     }
     return (
         <>
+        {
+                isLoader
+                ?
+                <>
+                <div className='loaders'>
+                <div className='overlay'>
+                </div>
+                    <CirclesWithBar
+                        height="100"
+                        width="100"
+                        color="#f0534e"
+                        wrapperClass=""
+                        visible={true}
+                        outerCircleColor=""
+                        innerCircleColor=""
+                        barColor=""
+                        ariaLabel='circles-with-bar-loading'
+                    />
+                </div>
+                </>
+                :
+                null
+            }
             <section className='login-comp'>
                 <div className='login-page'>
                     <div id='form-page' >
@@ -84,7 +117,7 @@ function Login() {
                                 <ion-icon name="person-circle-outline" id="icon"></ion-icon>
                                 <input type="email" value={userName} onChange={(e) => {
                                     setUserName(e.target.value)
-                                }} name='username' className='field' required />
+                                }} name='username' className='fieldinput' required />
                             </div>
                         </div>
                         <div className='input-field'>
@@ -93,7 +126,7 @@ function Login() {
                                 <ion-icon name="lock-open-outline" id="icon"></ion-icon>
                                 <input type="password" value={password} onChange={(e) => {
                                     setPassword(e.target.value)
-                                }} name='password' className='field' required />
+                                }} name='password' className='fieldinput' required />
                             </div>
                             <span onClick={forgot}> Forgot Password?</span>
                         </div>
@@ -109,6 +142,7 @@ function Login() {
                             autoLoad={false}
                             callback={responseFacebook}
                             fields="name,email,picture"
+                            isMobile={false}
                             render={renderProps => (
                                 <button className='google' onClick={renderProps.onClick} >Facebook</button>
                             )}

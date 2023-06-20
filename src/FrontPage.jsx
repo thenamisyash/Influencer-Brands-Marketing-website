@@ -8,6 +8,8 @@ import './Threads/Index.css';
 import axios from "axios";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { Base } from "./Threads/ComponentsThreads/Auth"
+import swal from "sweetalert";
+
 const FrontPage = () => {
     const location = useLocation();
     const [code, setCode] = useState('');
@@ -22,11 +24,13 @@ const FrontPage = () => {
             })
     }
     useEffect(() => {
+        swal("For better experience use on Chrome Browser, Mozila & Internet Explorer", "", "info")
         if (location.search) {
             setCode(location.search);
             if (code) {
                 InstagramCode();
-                alert("Please Close the last tab");
+                swal("Please Close the last tab", "", "success")
+                // alert("Please Close the last tab");
             }
         }
         setloading(true)
@@ -50,15 +54,21 @@ const FrontPage = () => {
                                 <div className="bgm">
                                     <img src={Threads} alt='lgo' width="300px" />
                                 </div>
-                                <h3>Sign Up/ Log In As</h3>
+                                <h3 id="methods">Sign Up/ Log In As</h3>
                                 {
                                     localStorage.getItem("email") ?
+                                        // <Link>
+                                        //     <button>Brand</button>
+                                        // </Link>
                                         <Link to='/threads/'>
-                                            <button disabled>Brand</button>
+                                            <button>Brand</button>
                                         </Link>
                                         :
+                                        // <Link>
+                                        //     <button>Brand</button>
+                                        // </Link>
                                         <Link to='/threads/signin'>
-                                            <button disabled>Brand</button>
+                                            <button>Brand</button>
                                         </Link>
                                 }
 

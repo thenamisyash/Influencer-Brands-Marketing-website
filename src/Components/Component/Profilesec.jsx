@@ -74,9 +74,14 @@ const ProfileSection = (props) => {
                 </div>
 
                 <div className="overall">
-                    <div className="level">
+                  
+
+                    {/* bounty level  commented  */}   
+                    {/* <div className="level">
                         <h5>Bounty Level :  <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon></h5>
-                    </div>
+                    </div> */}
+                  
+                  
                     <div className="hunts">
                         <div className="hunt">
                             <h5>Hunts :</h5>
@@ -86,9 +91,11 @@ const ProfileSection = (props) => {
                             <h5>Completed - {complete.length}</h5>
                         </div>
                     </div>
-                    <div className="rate">
+
+                      {/* Engagement rate commented  */}   
+                    {/* <div className="rate">
                         <h5>Overall Engagement Rate : {parseInt(props.data.total_engagement)}%</h5>
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </>

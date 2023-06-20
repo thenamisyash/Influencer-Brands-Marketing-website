@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../PrivateRoutes";
 import axios from "axios";
+import '../index.css';
 const Navbar = () => {
 
 
@@ -69,21 +70,21 @@ const Navbar = () => {
     return (
         <>
             <ol className="nav d-md-block text-uppercase fs-5 py-4" >
-                <Link to="AdminPanel/profile" className="text-decoration-none" > <i className="fa-solid fa-user  px-3 "></i> Profile </Link>
+                <Link to="profile" className="text-decoration-none" > <i className="fa-solid fa-user  px-3 "></i> Profile </Link>
                 <hr />
-                <Link to="AdminPanel/security" className="text-decoration-none" > <i className="fa-solid fa-user-shield mr-2 pt-3 px-3 "></i>Security </Link>
+                <Link to="security" className="text-decoration-none" > <i className="fa-solid fa-user-shield mr-2 pt-3 px-3 "></i>Security </Link>
                 <hr />
-                <Link to="AdminPanel/activity" className="text-decoration-none"> <i className="fa-solid fa-chart-line mr-2 pt-3 px-3 "></i> Activity</Link>
+                <Link to="activity" className="text-decoration-none"> <i className="fa-solid fa-chart-line mr-2 pt-3 px-3 "></i> Activity</Link>
                 <hr />
-                <Link to="AdminPanel/billing" className="text-decoration-none"> <i className="fa-solid fa-money-check-alt mr-2  px-3 pt-3"></i>Billing</Link>
+                <Link to="billing" className="text-decoration-none"> <i className="fa-solid fa-money-check-alt mr-2  px-3 pt-3"></i>Billing</Link>
                 <hr />
-                <Link to="AdminPanel/insight" className="text-decoration-none"><i className="fa-sharp fa-solid fa-eye mr-2 pt-3 px-3 "></i> Insights  </Link>
+                <Link to="insight" className="text-decoration-none"><i className="fa-sharp fa-solid fa-eye mr-2 pt-3 px-3 "></i> Insights  </Link>
                 <hr />
 
 
                 {
                     (access4super === "ala=1") ?
-                        <Link to="AdminPanel/removeAdmin" className="text-decoration-none" > <i className="fa-solid fa-user-check mr-2 pt-3 px-3 "></i>Remove Admin </Link>
+                        <Link to="removeAdmin" className="text-decoration-none" > <i className="fa-solid fa-user-check mr-2 pt-3 px-3 "></i>Remove Admin </Link>
                         :
                         null
                 }

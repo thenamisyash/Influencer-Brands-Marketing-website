@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const Navbar2 = () => {
+ const [show ,setShow] = useState(false);
 
+
+
+ useEffect(() => {
+    const timer = setTimeout(() => {
+        setShow(true);
+
+    }, 2000);
+ 
+    return () => clearTimeout(timer);
+ }, [])
+
+ 
+ 
 
 
 
@@ -60,24 +74,31 @@ const Navbar2 = () => {
 
 
     return (
+
         <>
+        {show===true ?
+        
             <ul className="nav nav-tabs card-header-tabs nav-fill d-flex justify-content-space-between">
-                <Link to="/AdminPanel/profile" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }} > <i className="fa-solid fa-user"></i></Link>
-                <Link to="/AdminPanel/security" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}> <i className="fa-solid fa-user-shield"></i></Link>
-                <Link to="/AdminPanel/activity" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}> <i className="fa-solid fa-chart-line"></i> </Link>
-                <Link to="/AdminPanel/billing " data-toggle='tab' aria-current="page" style={{ "fontSize": "1.5rem" }} className="nav-item nav-link text-decoration-none"> <i className="fa-solid fa-money-check-alt"></i></Link>
-                <Link to="/AdminPanel/insight" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}><i className="fa-sharp fa-solid fa-eye"></i> </Link>
+                <Link to="profile" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }} > <i className="fa-solid fa-user"></i></Link>
+                <Link to="security" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}> <i className="fa-solid fa-user-shield"></i></Link>
+                <Link to="activity" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}> <i className="fa-solid fa-chart-line"></i> </Link>
+                <Link to="billing " data-toggle='tab' aria-current="page" style={{ "fontSize": "1.5rem" }} className="nav-item nav-link text-decoration-none"> <i className="fa-solid fa-money-check-alt"></i></Link>
+                <Link to="insight" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }}><i className="fa-sharp fa-solid fa-eye"></i> </Link>
 
 
                  {
                  (access4super === "ala=1") ? 
-                 <Link to="/AdminPanel/removeAdmin" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }} > <i className="fa-solid fa-user-check "></i> </Link>
+                 <Link to="removeAdmin" className="nav-item nav-link text-decoration-none" style={{ "fontSize": "1.5rem" }} > <i className="fa-solid fa-user-check "></i> </Link>
                  : 
                  null 
                 }  
 
 
             </ul>
+
+            :
+            null
+        }
         </>
     );
 }

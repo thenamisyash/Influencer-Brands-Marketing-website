@@ -4,14 +4,14 @@ import '../Component/Bounty.css';
 
 
 const SideBar = () => {
-    useEffect(() => {
-        let handler = (e) => {
-            if (e.target) {
-                setShow(false)
-            }
-        }
-        document.addEventListener("mousedown", handler);
-    })
+    // useEffect(() => {
+    //     let handler = (e) => {
+    //         if (e.target) {
+    //             setShow(false)
+    //         }
+    //     }
+    //     document.addEventListener("mousedown", handler);
+    // })
 
     const [show, setShow] = useState(false);
     const logOut = () => {
@@ -33,7 +33,7 @@ const SideBar = () => {
                     </div>
                 </header>
                 <aside className={`sidebar ${show ? 'show' : null}`} >
-                    <nav className="nav">
+                    <nav className="nava">
                         <div>
                             <div className="header-toggle" onClick={() => setShow(!show)} >
                                 <ion-icon name="close-outline" size="large" className="icons"></ion-icon>
@@ -46,17 +46,23 @@ const SideBar = () => {
                                 </NavLink>
                                 <NavLink
                                     to="/Influencer/profile"
-                                    className="nav-logo">
+                                    className="nav-logo"
+                                    onClick={()=>setShow(false)}
+                                    >
                                     <span className="nav-name">Profile</span>
                                 </NavLink>
                                 <NavLink
                                     to="/Influencer/link"
-                                    className="nav-logo">
+                                    className="nav-logo"
+                                    onClick={()=>setShow(false)}
+                                    >
                                     <span className="nav-name">Link Profile</span>
                                 </NavLink>
                                 <NavLink
                                     to="/Influencer/updateprofile/"
-                                    className="nav-logo">
+                                    className="nav-logo"
+                                    onClick={()=>setShow(false)}
+                                    >
                                     <span className="nav-name">Update Profile</span>
                                 </NavLink>
                                 {

@@ -19,22 +19,51 @@ const Influ_Brand = () => {
   const [iinfo, setIifno] = useState("");
 
 
+  // useEffect(() => {
+  //   axios.get(`${baseUrl}/api/Brands/getbrandsData`)
+  //     .then((res) => {
+  //       console.log("Get Brands Data Response - ")
+  //     }).catch((error) =>
+  //       console.log("Get Brands Data Error - ", error));
+  // }, []);
+
+  // useEffect(() => {
+  //   axios.get(`${baseUrl}/api/Influencer/getinfluencerData`)
+  //     .then((res) => setIifno(res.data))
+  //     .catch((error) =>
+  //       console.log("the brand error - ", error));
+  // }, [iinfo]);
+
+
   useEffect(() => {
+    const timer = setTimeout(() => {
+      Api1();
+    }, 1000);
+    const timer2 = setTimeout(() => {
+      Api2();
+    }, 3000);
+
+
+    return () => clearTimeout(timer, timer2);
+
+  }, [iinfo]);
+
+
+  const Api1 = () => {
     axios.get(`${baseUrl}/api/Brands/getbrandsData`)
       .then((res) => {
-        // console.log(res.data)
         console.log("Get Brands Data Response - ")
       }).catch((error) =>
         console.log("Get Brands Data Error - ", error));
-  }, []);
 
-  useEffect(() => {
+  }
+  const Api2 = () => {
     axios.get(`${baseUrl}/api/Influencer/getinfluencerData`)
       .then((res) => setIifno(res.data))
       .catch((error) =>
         console.log("the brand error - ", error));
-  }, [iinfo]);
 
+  }
 
 
   return (

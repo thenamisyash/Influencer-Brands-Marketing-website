@@ -34,7 +34,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="profile" id="profile">
+      <div className="profile" >
         <form>
           <h4 style={{ "opacity": "0.9", "fontFamily": "Blacklisted", "letterSpacing": "2px" }}>PROFILE INFORMATION</h4>
           <hr className=" text-muted " />

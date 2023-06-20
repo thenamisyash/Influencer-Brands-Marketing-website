@@ -58,7 +58,7 @@ const Drop = () => {
               </div>
             )}
           </div>
-          <div className='dropdown'> 
+          <div className='dropdown'>
             <div className='dropdown-btn' onClick={() => setIsActive1(!isActive1)}>Type<ion-icon name="caret-down-outline" className='yash'></ion-icon></div>
             {isActive1 && (
               <div className='dropdown-content' id='dropdown-con'>

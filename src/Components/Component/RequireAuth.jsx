@@ -9,7 +9,7 @@ export const RequireAuth = ({ children }) => {
     }
     return children
 }
-export const Url = "https://bountyandthreads-backend.azurewebsites.net/";
+export const Url = "https://bounty-and-threads-backend.azurewebsites.net/";
 // export const Url = "http://localhost:8081/"
 
 

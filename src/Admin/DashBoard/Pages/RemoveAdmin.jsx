@@ -2,7 +2,9 @@ import React from 'react'
 import CountUp from 'react-countup';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../../index.css'
+// C:\Users\Asus\OneDrive\Documents\Merged\src\Admin\index.css
 import AdminAllData from '../../comp/AdminAllData';
 
 import { baseUrl } from '../../PrivateRoutes'; 

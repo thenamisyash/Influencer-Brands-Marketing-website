@@ -25,11 +25,11 @@ const BreadCrumb = () => {
                 </div>
 
                 <ul className="breadcrumb mt-1 pt-0 px-2">
-                    <li className="breadcrumb-item h6 d-md-block d-none">{location.pathname.toUpperCase().slice(1,).replace("/", " >> ").replace("D/", "D >> ")}</li>
+                    <li className="breadcrumb-item h6 d-md-block d-none">{location.pathname.toUpperCase().slice(18,).replace("/", " >> ").replace("D/", "D >> ")}</li>
                 </ul>
 
 
-                <span className="breadcrumb-item h6 d-md-none d-sm-block  " style={{ "position": "absolute", "left": "4rem" }}>{location.pathname.slice(7,).replace("/", " >> ").toUpperCase()}</span>
+                <span className="breadcrumb-item h6 d-md-none d-sm-block  " style={{ "position": "absolute", "left": "4rem" }}>{location.pathname.slice(18,).replace("/", " >> ").toUpperCase()}</span>
                 {/* <span className="breadcrumb-item h6 d-sm-none d-block px-1 " style={{ "position": "fixed", "left": "4rem" }}>{location.pathname.slice(17,).replace(" / "," >> ").toUpperCase()}</span> */}
 
                 {/* <span className="breadcrumb-item h6 d-md-none" style={{ "position": "relative", "right": "7em" }}>Profile Setting</span> */}

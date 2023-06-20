@@ -1,30 +1,183 @@
 import axios from "axios";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Bounty.css';
 import { Url } from "./RequireAuth";
+import { toast } from 'react-toastify';
+import { CirclesWithBar } from 'react-loader-spinner'
+
 const UpdateProfile = () => {
     const navigate = useNavigate();
     const [dob, setDob] = useState('');
     const [gender, setGender] = useState('');
     const [category, setCategory] = useState('');
-    const sendData = async() => {
+    const [previous, setPrevious] = useState("")
+    const [status, setStatus] = useState("");
+    const [anniversary, setAnniversary] = useState("");
+    const [payment, setPayment] = useState("");
+    const [profile, setProfile] = useState("")
+    const [Marital, setMarital] = useState("Unmarried")
+    const [isLoader, setIsLoader] = useState(false)
+
+    const sendData = async () => {
         let user = localStorage.getItem("userName");
-        let data = { dob, gender, category, user };
-        await axios.post(`${Url}api/BasicDisplay/updatePageInfo`, {
-            email: user,
-            dob: data.dob,
-            gender: data.gender,
-            categories: data.category
-        }).then((res) => {
-            // console.log('res', res);s
-            navigate('/Influencer/link', {replace : true});
-        }).catch((error) => {
-            console.log('error', error);
-        })
+        setIsLoader(true)
+        let data = { dob, gender, category, user, previous, status, anniversary, payment, profile };
+        if (data.dob == '') {
+            toast.info('Enter Date of Birth', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsLoader(false)
+        }
+        else if (data.gender == '') {
+            toast.info('Please Select Gender', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsLoader(false)
+        }
+        else if (data.category == '') {
+            toast.info('Please Select Catagory', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsLoader(false)
+        }
+        else if (data.payment == '') {
+            toast.info('Enter Payment Info', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsLoader(false)
+        }
+        else if (data.status == '') {
+            toast.info('Please Select Marital Status', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsLoader(false)
+        }
+        else if (Marital == 'Married') {
+            if (data.anniversary == '') {
+                toast.info('Enter Your Marriage Anniversary', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                setIsLoader(false)
+            }
+        }
+        else {
+            await axios.post(`${Url}api/BasicDisplay/updatePageInfo`, {
+                email: user,
+                dob: data.dob,
+                gender: data.gender,
+                categories: data.category,
+                materialStatus: data.status,
+                PreviousBrandAssociation: data.previous,
+                MarriageDate: data.anniversary,
+                PaymentDetail: data.payment,
+                instagram_Others_profiles: "none"
+            }).then((res) => {
+                // console.log('res', res);s
+                setIsLoader(false)
+                navigate('/Influencer/link', { replace: true });
+            }).catch((error) => {
+                setIsLoader(false)
+                console.log('error', error);
+            })
+        }
     }
+
+//     const getPofileData = () => {
+//         axios.get(`${Url}api/Influencer/InfluencerInfo/${localStorage.getItem('userName')}`)
+//             .then((res) => {
+// // console.log(res.data[0].InfluencerUpdatePageInfo!==null)
+//                 if(res.data[0].InfluencerUpdatePageInfo!==null)
+//                 {
+//                     setDob(res.data[0].InfluencerUpdatePageInfo.dob)
+//                     setGender(res.data[0].InfluencerUpdatePageInfo.gender)
+//                     setCategory(res.data[0].InfluencerUpdatePageInfo.categories)
+//                     setPrevious(res.data[0].InfluencerUpdatePageInfo.categories)
+//                     setStatus(res.data[0].InfluencerUpdatePageInfo.materialStatus)
+//                     setAnniversary(res.data[0].InfluencerUpdatePageInfo.materialStatus)
+//                     setPayment(res.data[0].InfluencerUpdatePageInfo.PaymentDetail)
+//                     // setProfile()
+//                     // // setMarital
+//                 }
+//                 else{
+//                     console.log(res.data[0])
+//                 }
+//             })
+//             .catch((err) => {
+//                 console.log(err)
+//             })
+//     }
+
+    // useEffect(()=>{
+    //     getPofileData()
+    // },[])
     return (
         <>
+            {
+                isLoader
+                    ?
+                    <>
+                        <div className='loaders'>
+                            <div className='overlay'>
+                            </div>
+                            <CirclesWithBar
+                                height="100"
+                                width="100"
+                                color="#f0534e"
+                                wrapperClass=""
+                                visible={true}
+                                outerCircleColor=""
+                                innerCircleColor=""
+                                barColor=""
+                                ariaLabel='circles-with-bar-loading'
+                            />
+                        </div>
+                    </>
+                    :
+                    null
+            }
             <main id='profile-up'>
                 <div className="profile-updation">
                     <h2>Update Profile</h2>
@@ -32,19 +185,81 @@ const UpdateProfile = () => {
                 <div className="update-page">
                     <div className="update-user">
                         <h5>Date Of Birth</h5>
-                        <input type="date" id="date" value={dob} onChange={(e) => { setDob(e.target.value) }} required />
+                        <input type="date" value={dob} onChange={(e)=>{setDob(e.target.value)}}/>
+                        {/* <input type="date" value={dob} onChange={(e) => { setDob(e.target.value) }} /> */}
                     </div>
                     <div className="update-user1">
                         <h5>Gender</h5>
                         <select name="gender" id="gender" value={gender} onChange={(e) => { setGender(e.target.value) }} required>
+                            <option selected hidden>Select Gender....</option>
                             <option>Male</option>
                             <option>Female</option>
                             <option>Other</option>
                         </select>
                     </div>
+                    <div className="update-user">
+                        <h5>Previous Brands </h5>
+                        <input type="text" id="association" value={previous} onChange={(e) => setPrevious(e.target.value)} />
+                    </div>
+                    <div className="update-category">
+                        <h5>Marital Status</h5>
+                        <select name="status" value={status} onChange={(e) => { setStatus(e.target.value); setMarital(e.target.value) }} >
+                            <option>--Choose--</option>
+                            <option>Married</option>
+                            <option>UnMarried</option>
+                        </select>
+                    </div>
+                    {
+                        Marital === "Married"
+                            ?
+                            <div className="update-user">
+                                <h5>Marriage Anniversary</h5>
+                                <input type="date" id="date" value={anniversary} onChange={(e) => setAnniversary(e.target.value)} />
+                            </div>
+                            :
+                            null
+                    }
+
+                    <div className="update-user">
+                        <h5>Payment Detail (UPI/PayTm)</h5>
+                        <input type="text" id="payment" value={payment} onChange={(e) => setPayment(e.target.value)} />
+                    </div>
+                    {/* <div className="update-category">
+                        <h5>Instagram Profiles </h5>
+                        <select value={profile} onChange={(e) => setProfile(e.target.value)}>
+                            <option>--Choose--</option>
+                            <option>No, this is the only one</option>
+                            <option>Yes, I have more pages</option>
+                        </select>
+                    </div> */}
                     <div className="update-category">
                         <h5> Select Category</h5>
                         <select name="Category" id="categories" value={category} onChange={(e) => { setCategory(e.target.value) }} required>
+                            <option selected hidden>Select Category...</option>
+                            <option>Photography</option>
+                            <option>Fashion</option>
+                            <option>Lifestyle</option>
+                            <option>Mom/Dad/Parenting</option>
+                            <option>Luxury</option>
+                            <option>Education</option>
+                            <option>Entertainment</option>
+                            <option>Beauty</option>
+                            <option>Art</option>
+                            <option>DIY</option>
+                            <option>Travel</option>
+                            <option>Food</option>
+                            <option>Healthcare/Wellness</option>
+                            <option>Fitness/Yoga/Diet</option>
+                            <option>Tech / Reviews</option>
+                            <option>Social Cause</option>
+                            <option>Meme</option>
+                            <option>Games</option>
+                            <option>Finance</option>
+                            <option>Cooking</option>
+                            <option>Networking</option>
+                            <option>Pets</option>
+                        </select>
+                        {/* <select name="Category" id="categories" value={category} onChange={(e) => { setCategory(e.target.value) }} required>
                             <option>Advertising/Marketing</option>
                             <option>Album</option>
                             <option>Amateur Sports Team</option>
@@ -235,7 +450,7 @@ const UpdateProfile = () => {
                             <option>Youth Organization</option>
                             <option>Zhejiang Restaurant</option>
                             <option>Zoo</option>
-                        </select>
+                        </select> */}
                     </div>
                     <div className="submit-update">
                         <button onClick={sendData}>Submit</button>

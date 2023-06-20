@@ -3,6 +3,9 @@ import './Bounty.css'
 import axios from "axios";
 import swal from "sweetalert";
 import { Url, redirect } from "./RequireAuth";
+import { toast } from 'react-toastify';
+import { CirclesWithBar } from 'react-loader-spinner'
+
 export const InformationFacebook = () => {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("");
@@ -16,7 +19,10 @@ export const InformationFacebook = () => {
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
     const [instagram, setInstagram] = useState("")
+    const [isLoader, setIsloader] = useState(false);
+
     const numberverify = () => {
+        setIsloader(true)
         console.log(phone)
         let name = localStorage.getItem('Influsername')
         if (!phone) {
@@ -26,13 +32,31 @@ export const InformationFacebook = () => {
                 phone: phone,
                 name: name
             }).then((res) => {
-                setVerifyButton(true)
+                setIsloader(false)
+                if (res.data == "number is already registered!!") {
+                    toast('This Number is Already Verified...', {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setVerifyButton(false)
+                }
+                else {
+                    setVerifyButton(true)
+                }
             }).catch((err) => {
+                setVerifyButton(false)
                 console.log(err.message)
             })
         }
     }
     const verifyCode = () => {
+        setIsloader(true)
         if (!phone) {
             swal("Enter Contact Number", "", "Warning")
         } else {
@@ -41,40 +65,210 @@ export const InformationFacebook = () => {
                 phone: phone
             }).then((res) => {
                 // console.log(res.data)
+                setIsloader(false)
                 swal("Verified", "", "success");
             }).catch((err) => {
+                setIsloader(false)
+                toast('Enter Correct OTP', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "Dark",
+                });
                 console.log(err)
             })
         }
     }
     const handleSubmit = () => {
+        setIsloader(true)
         let email = localStorage.getItem("userName")
         let userName = localStorage.getItem('Influsername')
         let data = { firstName, lastName, password, rePassword, phone, email, userName, street, city, state, zip, instagram }
         console.log(data);
-        axios.post(`${Url}api/Influencer/influencerRegister`, {
-            Influencer_username: data.userName,
-            Influencer_Firstname: data.firstName,
-            Influencer_Lastname: data.lastName,
-            email: data.email,
-            phone: data.phone,
-            Street_Address: data.street,
-            city: data.city,
-            State: data.state,
-            postal_code: data.zip,
-            password: data.password,
-            repassword: data.rePassword,
-            Instagram_link: data.instagram
-        }).then((res) => {
-            console.log(res.data)
-            redirect()
-            swal("Registered", "", "success");
-        }).catch((err) => {
-            console.log(err)
-        })
+        if (data.firstName == '') {
+            toast.info('Enter First Name', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.lastName == '') {
+            toast.info('Enter Last Name', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.password=='') {
+            console.log(data.password)
+            toast.info('Enter Password', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.rePassword == '') {
+            console.log(data.password)
+            toast.info('Enter Re-Password', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.password !== data.rePassword) {
+            toast.info('Password Not Matched Please Check', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.phone == '') {
+            toast.info('Enter Phone Number', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.userName == '') {
+            toast.info('Enter Username', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.street == '') {
+            toast.info('Enter Address', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.city == '') {
+            toast.info('Enter City', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else if (data.state == '') {
+            toast.info('Select State', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            setIsloader(false)
+        }
+        else {
+            axios.post(`${Url}api/Influencer/influencerRegister`, {
+                Influencer_username: data.userName,
+                Influencer_Firstname: data.firstName,
+                Influencer_Lastname: data.lastName,
+                email: data.email,
+                phone: data.phone,
+                Street_Address: data.street,
+                city: data.city,
+                State: data.state,
+                postal_code: data.zip,
+                password: data.password,
+                repassword: data.rePassword,
+                Instagram_link: "none"
+            }).then((res) => {
+                console.log(res.data)
+                redirect()
+                swal("Registered", "", "success");
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     }
     return (
         <>
+            {
+                isLoader
+                    ?
+                    <>
+                        <div className='loaders'>
+                            <div className='overlay'>
+                            </div>
+                            <CirclesWithBar
+                                height="100"
+                                width="100"
+                                color="#f0534e"
+                                wrapperClass=""
+                                visible={true}
+                                outerCircleColor=""
+                                innerCircleColor=""
+                                barColor=""
+                                ariaLabel='circles-with-bar-loading'
+                            />
+                        </div>
+                    </>
+                    :
+                    null
+            }
             <section id="information-sec">
                 <div className="container d-flex justify-content-center">
                     <div className="row">
@@ -162,11 +356,11 @@ export const InformationFacebook = () => {
                                     <input type="password" placeholder="Password" value={rePassword} onChange={(e) =>
                                         setRePassword(e.target.value)} />
                                 </div>
-                                <div className="main-info">
+                                {/* <div className="main-info">
                                     <label id="label-info">Instagram </label>
                                     <input type="text" placeholder="" value={instagram} onChange={(e) =>
                                         setInstagram(e.target.value)} />
-                                </div>
+                                </div> */}
                             </div>
                             <div className="submitButton">
                                 <button onClick={handleSubmit}>Submit</button>
